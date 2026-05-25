@@ -1,23 +1,12 @@
+// src/components/FreeFlowCard.tsx
 import React from 'react';
 
-interface FreeFlowCardProps {
-  themeBorderDeep: string;
-  themeSubBg: string;
-  themeTerminalBg: string;
-  themeTextMuted: string;
-  themeTextDeepMuted: string;
-  themeBorder: string;
-  isDark: boolean;
-}
-
-export default function FreeFlowCard({ 
-  themeBorderDeep, themeSubBg, themeTerminalBg, themeTextMuted, themeTextDeepMuted, themeBorder, isDark 
-}: FreeFlowCardProps) {
+export default function FreeFlowCard() {
   return (
-    <section className={`border ${themeBorderDeep} ${themeSubBg} overflow-hidden rounded-sm`}>
-      <div className={`${themeTerminalBg} border-b ${themeBorderDeep} px-4 py-3 flex items-center justify-between text-[10px] font-mono ${themeTextMuted}`}>
+    <section className="border border-border-deep overflow-hidden rounded-sm">
+      <div className="bg-terminal-bg border-b border-border-deep px-4 py-3 flex items-center justify-between text-[10px] font-mono text-text-muted">
         <div className="flex items-center space-x-2">
-          <span className={`w-1.5 h-1.5 rounded-full ${isDark ? "bg-neutral-400" : "bg-neutral-600"} animate-pulse`} />
+          <span className="w-1.5 h-1.5 rounded-full bg-text-muted animate-pulse" />
           <span className="uppercase tracking-wider font-bold">FreeFlow App Integration</span>
         </div>
         <span>LYRIC UTILITY SUITE v1.0</span>
@@ -28,12 +17,12 @@ export default function FreeFlowCard({
           <h4 className="text-base font-bold uppercase tracking-tight">
             A Practice Tool for Lyricists
           </h4>
-          <p className={`text-xs leading-relaxed font-mono ${themeTextMuted}`}>
+          <p className="text-xs leading-relaxed font-mono text-text-muted">
             To make it easier to write and practice verses, we use the FreeFlow freestyle platform—a clean layout tracking system built to test bar structure. It serves as a straightforward, functional notepad and timing workspace designed to help you organize rhyme paths, practice your delivery, and sharpen your cadence using select studio assets.
           </p>
         </div>
 
-        <div className={`grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-[10px] ${themeTextMuted} uppercase border-y ${themeBorder} py-4`}>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-[10px] text-text-muted uppercase border-y border-border-theme py-4">
           <div>
             <span className="block text-current font-bold mb-1">// SPEED CONTROLS</span>
             Slow down or speed up the instrumental backing loops to lock in your timing parameters.
@@ -49,7 +38,7 @@ export default function FreeFlowCard({
         </div>
         
         <div className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className={`font-mono text-[9px] ${themeTextDeepMuted} uppercase tracking-wider`}>
+          <div className="font-mono text-[9px] text-text-deep-muted uppercase tracking-wider">
             External Workspace Deployment // freeflow-freestyle.vercel.app
           </div>
           
@@ -57,7 +46,7 @@ export default function FreeFlowCard({
             href="https://freeflow-freestyle.vercel.app/" 
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-block border ${isDark ? "bg-white text-black border-white hover:bg-neutral-200" : "bg-black text-white border-black hover:bg-neutral-800"} font-black text-center text-[10px] px-6 py-3 uppercase tracking-widest transition-colors duration-150 rounded-xs select-none`}
+            className="inline-block border border-foreground bg-foreground text-background font-black text-center text-[10px] px-6 py-3 uppercase tracking-widest transition-opacity duration-150 rounded-xs select-none hover:opacity-90"
           >
             Open FreeFlow Studio
           </a>

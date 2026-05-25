@@ -1,16 +1,16 @@
+// src/components/Footer.tsx
 import React from 'react';
 
-interface FooterProps {
-  themeBorder: string;
-  themeTextDeepMuted: string;
-  isDark: boolean;
-}
-
-export default function Footer({ themeBorder, themeTextDeepMuted, isDark }: FooterProps) {
+export default function Footer() {
   return (
-    <footer className={`px-6 py-5 border-t ${themeBorder} flex flex-col sm:flex-row gap-2 justify-between items-center text-[9px] font-mono ${themeTextDeepMuted} bg-transparent`}>
+    <footer className="px-6 py-5 border-t border-border-theme flex flex-col sm:flex-row gap-2 justify-between items-center text-[9px] font-mono text-text-deep-muted bg-transparent">
       <span>© 2026 STUDIO 51 DIGITAL MUSIC PRODUCTION GROUP</span>
-      <span>[ SYSTEM_THEME: {isDark ? "BRUTALIST_DARK" : "BRUTALIST_LIGHT"} ]</span>
+      
+      {/* Handled natively via Tailwind dark/light utility overrides with zero prop reliance */}
+      <div>
+        <span className="hidden dark:inline">[ SYSTEM_THEME: BRUTALIST_DARK ]</span>
+        <span className="inline dark:hidden">[ SYSTEM_THEME: BRUTALIST_LIGHT ]</span>
+      </div>
     </footer>
   );
 }

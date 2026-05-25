@@ -1,25 +1,23 @@
+// src/components/Header.tsx
 "use client";
 
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 interface HeaderProps {
   isDark: boolean;
-  setIsDark: (value: boolean) => void;
-  themeBorder: string;
+  setIsDark: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Header({ isDark, setIsDark, themeBorder }: HeaderProps) {
-  // Common styling tokens for your streaming utility icons
-  const iconStyle = `w-4 h-4 transition-colors duration-150 ${
-    isDark ? "text-neutral-400 hover:text-white" : "text-neutral-600 hover:text-black"
-  }`;
+export default function Header({ isDark, setIsDark }: HeaderProps) {
+  // Cleaned up using global utility classes instead of manual dark/light ternary conditions
+  const iconStyle = "w-4 h-4 text-text-muted hover:text-foreground transition-colors duration-150";
 
   return (
-    <header className={`sticky top-0 z-50 ${isDark ? "bg-black/95" : "bg-white/95"} backdrop-blur-md border-b ${themeBorder} px-6 py-3.5 flex items-center justify-between transition-colors duration-200`}>
-      
+    <header className="flex items-center justify-between px-6 h-14 border-b border-border-theme sticky top-0 z-50 bg-background/80 backdrop-blur">
+
       {/* 🏷️ LEFT SIDE: LOGO & APP TITLE */}
-      <div className={`flex items-center space-x-3.5 font-mono text-[10px] tracking-widest ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-        <div className={`w-5 h-5 flex items-center justify-center rounded-xs overflow-hidden select-none border ${isDark ? "border-neutral-800" : "border-black bg-black"}`}>
+      <div className="flex items-center space-x-3.5 font-mono text-[10px] tracking-widest text-text-muted">
+        <div className="w-5 h-5 flex items-center justify-center rounded-xs overflow-hidden select-none border border-border-theme bg-terminal-bg">
           <img 
             src="/favicon.ico" 
             alt="Endrey" 
@@ -29,16 +27,16 @@ export default function Header({ isDark, setIsDark, themeBorder }: HeaderProps) 
             }}
           />
         </div>
-        <span className={`w-1 h-1 rounded-full ${isDark ? "bg-neutral-500" : "bg-neutral-400"} animate-pulse`} />
-        <span className="font-bold hidden sm:inline">STUDIO 51 MUSIC RECORD // INDEX</span>
-        <span className="font-bold sm:hidden">S51 // INDEX</span>
+        <span className="w-1 h-1 rounded-full bg-text-deep-muted animate-pulse" />
+        <span className="font-bold hidden sm:inline">STUDIO 51 MUSIC RECORD</span>
+        <span className="font-bold sm:hidden">S51</span>
       </div>
       
       {/* 🎛️ RIGHT SIDE: STREAMING UTILITIES & CONTRAST SWITCH */}
       <div className="flex items-center space-x-6">
         
         {/* EXTERNAL EMBED LINK LINKS MATRIX */}
-        <div className="flex items-center space-x-4 border-r border-neutral-800/60 pr-5 h-5">
+        <div className="flex items-center space-x-4 border-r border-border-theme pr-5 h-5">
           
           {/* 📺 YOUTUBE PORTAL LINK */}
           <a 
@@ -86,11 +84,7 @@ export default function Header({ isDark, setIsDark, themeBorder }: HeaderProps) 
         {/* CONTRAST CONTROLLER TRIGGER */}
         <button 
           onClick={() => setIsDark(!isDark)}
-          className={`font-mono text-[10px] tracking-widest uppercase border px-2.5 py-1.5 transition-colors duration-150 rounded-sm font-bold ${
-            isDark 
-              ? "border-white text-white hover:bg-white hover:text-black" 
-              : "border-black text-black hover:bg-black hover:text-white"
-          }`}
+          className="font-mono text-[10px] tracking-widest uppercase border border-foreground text-foreground px-2.5 py-1.5 rounded-sm font-bold bg-transparent hover:bg-foreground hover:text-background transition-colors duration-150"
         >
           {isDark ? "[ LIGHT MODE ]" : "[ DARK MODE ]"}
         </button>

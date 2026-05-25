@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Endrey // Studio 51 Project Archive",
+  title: "Endrey // Studio 51",
   description: "A minimal, brutalist web portal documenting the music catalog, verse concepts, and backstory of artist Endrey (Studio 51 Records).",
 };
 
