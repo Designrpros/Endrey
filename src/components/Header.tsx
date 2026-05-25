@@ -9,7 +9,6 @@ interface HeaderProps {
 }
 
 export default function Header({ isDark, setIsDark }: HeaderProps) {
-  // Cleaned up using global utility classes instead of manual dark/light ternary conditions
   const iconStyle = "w-4 h-4 text-text-muted hover:text-foreground transition-colors duration-150";
 
   return (
@@ -84,9 +83,26 @@ export default function Header({ isDark, setIsDark }: HeaderProps) {
         {/* CONTRAST CONTROLLER TRIGGER */}
         <button 
           onClick={() => setIsDark(!isDark)}
-          className="font-mono text-[10px] tracking-widest uppercase border border-foreground text-foreground px-2.5 py-1.5 rounded-sm font-bold bg-transparent hover:bg-foreground hover:text-background transition-colors duration-150"
+          className="font-mono text-[10px] tracking-widest uppercase border border-foreground text-foreground p-2 sm:px-2.5 sm:py-1.5 rounded-sm font-bold bg-transparent hover:bg-foreground hover:text-background transition-colors duration-150 flex items-center justify-center"
         >
-          {isDark ? "[ LIGHT MODE ]" : "[ DARK MODE ]"}
+          {/* 📱 MOBILE VIEWPORTS: ICON SHIFT */}
+          {isDark ? (
+            /* Sun Icon (Action: Switch to Light mode) */
+            <svg className="w-3.5 h-3.5 block sm:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+            </svg>
+          ) : (
+            /* Moon Icon (Action: Switch to Dark mode) */
+            <svg className="w-3.5 h-3.5 block sm:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          )}
+
+          {/* 💻 LARGE VIEWPORTS: BRUTALIST TEXT CHIP */}
+          <span className="hidden sm:inline">
+            {isDark ? "[ LIGHT MODE ]" : "[ DARK MODE ]"}
+          </span>
         </button>
       </div>
 
